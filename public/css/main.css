@@ -1,0 +1,56 @@
+body {
+	background-color: #AAA;
+	font-family: DejaVu Sans Mono;
+    background-image: url("/css/madeira.jpg");
+}
+
+main {
+	margin-top: 2em;
+	margin-left: 35%;
+}
+
+.blocos {
+	text-align: center;
+	width: 30vw;
+	height: 30vw;
+}
+
+.linha {
+	width: 100%; 
+	height: 33%; 
+	padding: 0;
+	display: flex;
+}
+
+.bloco {
+	background-color:#F7FE2E;
+	font-size: 2rem;
+	width: 33%;
+	height:100%;
+	margin: 0;
+	padding: 0;
+	border-radius: 25px;
+	color: #F7FE2E;
+}
+
+.info {
+	display: flex;
+	justify-content: space-between;
+	width: 30vw;
+	color: #F7FE2E;
+}
+
+#jogador {
+	color:yellow;
+}
+
+#reiniciar {
+	margin-top: 2rem;
+	padding: .6rem 2rem;
+	font-size: 1em;
+	background-color: #bc5e00;
+	color: #FFF;
+	border-radius: 5px;
+	border-width: 0;
+	font-family: DejaVu Sans Mono;
+}

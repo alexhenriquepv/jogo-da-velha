@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+	<title>Jogo da Velha</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+	
+	<main>
+		<div class="blocos">
+			<div class="linha">
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+			</div>
+			<div class="linha">
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+			</div>
+			<div class="linha">
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+			</div>
+		</div>
+		
+		<div class="info">
+			<button id="reiniciar">Reiniciar</button>
+			<h1>Jogador: <span id="jogador"></span></h1>
+		</div>
+	</main>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="scripts/velha.js"></script>
+</body>
+
+</html>

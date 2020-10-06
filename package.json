@@ -1,0 +1,29 @@
+{
+  "name": "jogo-da-velha",
+  "version": "1.0.0",
+  "description": "UFAM ES Redes - Trabalho 1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexhenriquepv/jogo-da-velha.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "socket"
+  ],
+  "author": "Alex Paiva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexhenriquepv/jogo-da-velha-web/issues"
+  },
+  "homepage": "https://github.com/alexhenriquepv/jogo-da-velha-web#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
