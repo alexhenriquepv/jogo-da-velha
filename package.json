@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/alexhenriquepv/jogo-da-velha-web#readme",
   "dependencies": {
+    "chance": "^1.1.7",
+    "consign": "^0.1.6",
     "express": "^4.17.1",
     "socket.io": "^2.3.0"
   }

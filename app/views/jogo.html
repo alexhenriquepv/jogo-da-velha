@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+	<title>Jogo da Velha</title>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+	
+	<main>
+		<div class="info">
+			<p id="sala_id"></p>
+			<p id="meu_jogador"></p>
+		</div>
+		<div class="blocos">
+			<div class="linha">
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+			</div>
+			<div class="linha">
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+			</div>
+			<div class="linha">
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+				<button class="bloco"></button>
+			</div>
+		</div>
+		
+		<div class="action">
+			<button id="reiniciar">Reiniciar</button>
+			<h1>Na vez: <span id="jogador"></span></h1>
+		</div>
+	</main>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/scripts/velha.js"></script>
+</body>
+
+</html>

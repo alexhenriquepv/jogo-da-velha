@@ -1,42 +1,36 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="pt-br">
 
 <head>
-	<title>Jogo da Velha</title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="/css/main.css">
+    <title>Jogo da Velha</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body { margin-top: 3em; }
+    </style>
 </head>
-
 <body>
-	
-	<main>
-		<div class="blocos">
-			<div class="linha">
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-			</div>
-			<div class="linha">
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-			</div>
-			<div class="linha">
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-			</div>
-		</div>
-		
-		<div class="info">
-			<button id="reiniciar">Reiniciar</button>
-			<h1>Jogador: <span id="jogador"></span></h1>
-		</div>
-	</main>
-
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="scripts/velha.js"></script>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Jogo da velha</h1>
+            <form action="/criar-sala">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    Criar uma sala
+                </button>
+            </form>
+            <hr class="my-4">
+            <p class="lead">Entrar numa sala</p>
+            <form action="entrar-na-sala">
+                <div class="form-group">
+                    <input type="text" name="sala_id" class="form-control form-control-lg"
+                           required autocomplete="off" placeholder="Insira o código da sala">
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
-
 </html>

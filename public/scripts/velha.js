@@ -5,18 +5,18 @@ const blocos = document.querySelectorAll('.bloco')
 const btn_reiniciar = document.getElementById('reiniciar')
 const label_jogador = document.getElementById('jogador')
 
-var MEU_SIMBOLO = ''
-var jogador = '' 
-var vencedor = null
+let MEU_SIMBOLO, JOGADOR_ATUAL, VENCEDOR
 
 function inicia () {
 	for (let i = 0; i < 9; i++) {
-		blocos[i].innerText = ''; //Limpa todas as blocos
-		blocos[i].style.color = COR_BLOCO; //Torna o valor _ invisível
-		blocos[i].style.backgroundColor = COR_BLOCO; //Torna o fundo branco
+		blocos[i].innerText = ''
+		blocos[i].style.color = COR_BLOCO
+		blocos[i].style.backgroundColor = COR_BLOCO
 	}
 
-	vencedor = ''
+	VENCEDOR = null
+
+	// A primeira jogada sempre vai ser do jogador 'O'
 	defineJogador('O')
 }
 
@@ -26,19 +26,19 @@ function blocoVazio (bloco) {
 
 function defineJogador (id) {
 	if (id == 'O') {
-		jogador = 'O';
+		JOGADOR_ATUAL = 'O';
 		label_jogador.innerText = 'O';
 		label_jogador.style.color = '#ffffff';
 	}
 	else {
-		jogador = 'X';
+		JOGADOR_ATUAL = 'X';
 		label_jogador.innerText = 'X';
 		label_jogador.style.color = '#000000';
 	}
 }
 
 function trocarJogador () {
-	if(jogador == 'X') defineJogador('O')
+	if(JOGADOR_ATUAL == 'X') defineJogador('O')
 	else defineJogador('X')
 }
 
@@ -98,45 +98,60 @@ function quemVenceu () {
 }
 
 function jogada (bloco) {
-    bloco.innerText = jogador
+    bloco.innerText = JOGADOR_ATUAL
     bloco.style.color = COR_TEXTO_BLOCO
     trocarJogador()
-    vencedor = quemVenceu()
+    VENCEDOR = quemVenceu()
 }
 
-const socket = io()
+function nomeDaSala () {
+    return window.location.pathname.split("/").pop()
+}
+
+const socket = io({
+    query: {
+        sala_id: nomeDaSala()
+    }
+})
 
 socket.on('connect', () => {
     console.log(`conectado como ${socket.id}`)
+    document.getElementById('sala_id').innerText = `Código da sala ${nomeDaSala()}`
 })
 
-socket.on('simbolo', simbolo => {
+socket.on('#simbolo', simbolo => {
     MEU_SIMBOLO = simbolo
-    console.log(`voce eh o jogador ${simbolo}`)
+    document.getElementById('meu_jogador').innerText = `Você é o jogador ${MEU_SIMBOLO}`
 })
 
-socket.on('inicia', simbolo => {
-    inicia()
+socket.on('#inicia', inicia)
+socket.on('#jogada', dados => jogada(blocos[dados.bloco]))
+
+// Quando há desconexão com o servidor
+socket.on('connect_error', () => {
+    alert('Você perdeu conexão')
+    window.location.href = "/"
 })
 
-socket.on('jogada', dados => {
-    console.log(`jogada ${dados.jogador} no bloco ${dados.bloco}`)
-    jogada(blocos[dados.bloco])
+// Quando o adversário perde a conexão
+socket.on('#desconexao', () => {
+    alert('O outro jogador saiu da partida')
+    window.location.href = "/"
 })
 
 for (let i = 0; i < 9; i++) {
 	blocos[i].addEventListener('click', (event) => {
-	    if (MEU_SIMBOLO != jogador) return
-		if ((blocoVazio(event.target)) && !vencedor) {
+	    if (MEU_SIMBOLO != JOGADOR_ATUAL) return
+		if ((blocoVazio(event.target)) && !VENCEDOR) {
 
-		    socket.emit('jogada', {
-		        jogador: jogador,
+		    socket.emit('#jogada', {
+		        jogador: JOGADOR_ATUAL,
 		        bloco: i
 		    })
 
-			jogada(event.target)
+//			jogada(event.target)
 		}
 	})
 }
 
-btn_reiniciar.addEventListener('click', inicia)
+btn_reiniciar.addEventListener('click', () => socket.emit('#reinicia'))
