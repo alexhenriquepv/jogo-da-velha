@@ -26,7 +26,7 @@ Todas as mensagens são enviadas por websockets, e seus respectivos códigos dev
 - O jogador __O__ sempre inicia a partida;
 
 ## Máquina de estado
-![github-small](https://github.com/alexhenriquepv/jogo-da-velha/blob/main/public/stm.png)
+![github-small](https://github.com/alexhenriquepv/jogo-da-velha/blob/main/public/stm.jpg)
 
 ## Como jogar
 - Criar uma sala:
