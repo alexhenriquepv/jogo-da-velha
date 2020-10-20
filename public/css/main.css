@@ -44,13 +44,18 @@ main {
 	color: #F7FE2E;
 }
 
+.action h1 {
+    font-size: 1.2rem;
+}
+
 #jogador {
 	color:yellow;
 }
 
 #reiniciar {
 	margin-top: 2rem;
-	padding: .6rem 2rem;
+	padding: .4rem 1rem;
+	max-height: 3rem;
 	font-size: 1em;
 	background-color: #bc5e00;
 	color: #FFF;
