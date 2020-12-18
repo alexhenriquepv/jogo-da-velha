@@ -38,7 +38,7 @@ class Tabuleiro {
     }
 }
 
-const socket = io("https://jogo-da-velha-ere.herokuapp.com", {
+const socket = io("https://jogo-da-velha-ere.herokuapp.com/", {
   query: { username: USERNAME }
 })
 
