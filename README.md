@@ -1,7 +1,7 @@
 # Jogo da Velha
 UFAM - Redes de computadores ERE 2020.
 
-![github-small](https://github.com/alexhenriquepv/jogo-da-velha/blob/main/public/print.png)
+![github-small](https://github.com/alexhenriquepv/jogo-da-velha/blob/cliente_a/public/print.png)
 
 ## Arquitetura e comunicação
 A aplicação conta com um servidor que recebe as requisições, realiza o processamento e devolve a resposta. Dessa forma, arquitetura __Cliente e Servidor__.
@@ -29,7 +29,7 @@ Todas as mensagens são enviadas por websockets, e seus respectivos códigos dev
 - O jogador __O__ sempre inicia a partida;
 
 ## Máquina de estado
-![github-small](https://github.com/alexhenriquepv/jogo-da-velha/blob/main/public/stm.png)
+![github-small](https://github.com/alexhenriquepv/jogo-da-velha/blob/main/cliente_a/stm.png)
 
 ## Inicialização
 ```npm install && npm start```
