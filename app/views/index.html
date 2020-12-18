@@ -17,20 +17,30 @@
     <div class="container">
         <div class="jumbotron">
             <h1 class="display-4">Jogo da velha</h1>
-            <form action="/criar-sala">
-                <button type="submit" class="btn btn-primary btn-lg">
-                    Criar uma sala
-                </button>
-            </form>
-            <hr class="my-4">
-            <p class="lead">Entrar numa sala</p>
-            <form action="entrar-na-sala">
+            <p class="lead">Informe seu nome</p>
+            <form id="form" action="#">
                 <div class="form-group">
-                    <input type="text" name="sala_id" class="form-control form-control-lg"
-                           required autocomplete="off" placeholder="Insira o código da sala">
+                    <input type="text" id="nome" name="nome" class="form-control form-control-lg"
+                           required autocomplete="off" placeholder="Nome de usuário">
                 </div>
+
+                <button type="submit" class="btn btn-primary btn-lg">
+                    Entrar no jogo
+                </button>
             </form>
         </div>
     </div>
+
+    <script type="text/javascript">
+      const form = document.getElementById("form")
+      const name = document.getElementById("nome")
+      form.onsubmit = (e) => {
+        e.preventDefault()
+        if (name.value.length) {
+          sessionStorage.setItem("username", name.value)
+          location.href = "/jogo"
+        }
+      }
+    </script>
 </body>
 </html>

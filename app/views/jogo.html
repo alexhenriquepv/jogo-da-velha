@@ -8,42 +8,52 @@
 	<meta name="viewport"
 		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+	<style media="screen">
+		main {
+			margin-top: .5em;
+		}
+		.bloco  { padding: .1em; font-size: 2em;}
+	</style>
 </head>
 
 <body>
-	
-	<main>
-		<div class="info">
-			<p id="sala_id"></p>
-			<p id="meu_jogador"></p>
-		</div>
-		<div class="blocos">
-			<div class="linha">
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-				<button class="bloco"></button>
+	<main class="container" id="app">
+		<div class="tabuleiros columns">
+			<div class="column col-9" style="background-color: '#FA3300'">
+				<div class="columns" v-if="tabuleiros.length">
+					<tabuleiro
+						class="column col-mx-auto"
+						v-for="(t, index) in tabuleiros"
+						:key="t.id_sala"
+						v-bind:id_sala="t.id_sala"
+						v-bind:solicitante="t.solicitante"
+						v-bind:convidado="t.convidado"
+						v-bind:class="{
+							'col-sm-12 col-md-8 col-5': (tabuleiros.length == 1),
+							'col-sm-12 col-md-6 col-5': (tabuleiros.length == 2),
+							'col-sm-12 col-md-6 col-4': (tabuleiros.length == 3),
+							'col-sm-12 col-md-6 col-3': (tabuleiros.length == 4)
+						}"
+					/>
+				</div>
+				<div class="column col-12 empty" v-if="!tabuleiros.length">
+					<p class="empty-title h5">Nenhum jogo em andamento</p>
+					<p class="empty-subtitle">Convide alguém para jogar!</p>
+				</div>
 			</div>
-			<div class="linha">
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-				<button class="bloco"></button>
+			<div class="jogadores column col-3">
+				<jogadores :data="jogadores"/>
 			</div>
-			<div class="linha">
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-				<button class="bloco"></button>
-			</div>
-		</div>
-		
-		<div class="action">
-			<button id="reiniciar">Reiniciar</button>
-			<h1>Na vez: <span id="jogador"></span></h1>
 		</div>
 	</main>
 
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="/scripts/velha.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="/scripts/tabuleiro.js"></script>
+	<script src="/scripts/jogadores.js"></script>
+	<script src="/scripts/jogo.js"></script>
 </body>
 
 </html>
